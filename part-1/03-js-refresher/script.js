@@ -142,7 +142,85 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+const books = getBooks();
 
+/* fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+
+  */
+
+const getData = async () => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await response.json();
+  console.log(data);
+};
+getData();
+
+/*
+
+// Functional Array Methods
+
+const x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => el * 5);
+x;
+
+const bookTitles = books.map((book) => book.title);
+bookTitles;
+
+const booksData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: book.reviewsCount,
+}));
+booksData;
+
+const longBooks = books
+  .filter((book) => book.pages > 500)
+  .map((book) => book.title);
+longBooks;
+
+// Reduce Methods
+
+const pagesAllBook = books.reduce((acc, book) => acc + book.pages, 0);
+console.log(pagesAllBook);
+
+//
+
+const xy = [3, 7, 1, 9, 3, 8, 0];
+//  sort mutates the original Array
+console.log(xy.slice().sort((a, b) => a - b));
+console.log(xy);
+
+//
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+console.log(
+  sortedByPages.map((book) => ({ pages: book.pages, title: book.title }))
+);
+//
+
+const newBook = {
+  id: 6,
+  title: "Harry potter and the chamber of secrets",
+  author: "J.K. Rowling",
+};
+
+const booksAfterAdd = [...books, newBook];
+console.log(booksAfterAdd);
+
+//
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+console.log(booksAfterDelete);
+
+//
+
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 2 ? { ...book, author: "Saurav Kumar Verma" } : book
+);
+console.log(booksAfterUpdate);
+
+*/
+/*********************** 
 // Destructuring
 
 //   // With Objects
@@ -221,3 +299,5 @@ function getTotalReviewCount(book) {
 
 console.log(getTotalReviewCount(book));
 console.log(getTotalReviewCount(book2));
+
+*/
