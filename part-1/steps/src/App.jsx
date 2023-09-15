@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const App = () => {
   const [step, setStep] = useState(1);
+  const [isOpen, setIsOpen] = useState(true);
   const buttonStyles = { backgroundColor: "#7850f2", color: "#fff" };
   const messages = [
     "Learn Fundamentals of Web Development 🌐",
@@ -24,28 +25,36 @@ const App = () => {
   };
 
   return (
-    <div className="steps">
-      <div className="numbers">
-        {Array.from({ length: 10 }, (val, i) => i).map((num) => (
-          <div key={num + 1} className={`${step >= num ? "active" : ""}`}>
-            {num + 1}
+    <>
+      <button className="close" onClick={() => setIsOpen((prev) => !prev)}>
+        &times;
+      </button>
+
+      {isOpen && (
+        <div className="steps">
+          <div className="numbers">
+            {Array.from({ length: 10 }, (val, i) => i).map((num) => (
+              <div key={num + 1} className={`${step >= num ? "active" : ""}`}>
+                {num + 1}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      <p className="message">
-        Step {step + 1}: {messages[step]}
-      </p>
+          <p className="message">
+            Step {step + 1}: {messages[step]}
+          </p>
 
-      <div className="buttons">
-        <button onClick={handlePrevious} style={buttonStyles}>
-          Previous
-        </button>
-        <button onClick={handleNext} style={buttonStyles}>
-          Next
-        </button>
-      </div>
-    </div>
+          <div className="buttons">
+            <button onClick={handlePrevious} style={buttonStyles}>
+              Previous
+            </button>
+            <button onClick={handleNext} style={buttonStyles}>
+              Next
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
