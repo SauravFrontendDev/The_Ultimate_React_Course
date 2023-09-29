@@ -37,9 +37,13 @@ const App = () => {
           How did your friend like the service?
         </SelectPercentage>
       </form>
-      <ResultOutput bill={bill} yourTip={yourTip} friendTip={friendTip} />
 
-      {isChanged && <button onClick={handleReset}>Reset</button>}
+      {isChanged && (
+        <div>
+          <ResultOutput bill={bill} yourTip={yourTip} friendTip={friendTip} />
+          <button onClick={handleReset}>Reset</button>
+        </div>
+      )}
     </div>
   );
 };
